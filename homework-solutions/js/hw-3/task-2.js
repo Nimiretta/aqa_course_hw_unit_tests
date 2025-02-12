@@ -4,3 +4,5 @@
 n + nn + nnn, где n не перемножаются, а конкатенируются
 
 */
+const num = 8;
+console.log(num + +`${num}${num}` + +`${num}${num}${num}`);
