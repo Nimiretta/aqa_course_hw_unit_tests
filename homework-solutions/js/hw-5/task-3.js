@@ -5,12 +5,13 @@
  */
 const word = 'hello';
 const vowels = 'aeiouy';
+const cleanedWord = word.toLowerCase().replace(/[^a-z]/g, '');
 
 let vowelsCount = 0;
 let consonantsCount = 0;
 
-for (let i = 0; i < word.length; i++) {
-  vowels.includes(word[i].toLowerCase()) ? vowelsCount++ : consonantsCount++;
+for (let i = 0; i < cleanedWord.length; i++) {
+  vowels.includes(cleanedWord[i]) ? vowelsCount++ : consonantsCount++;
 }
 
 let vowelsAndConsonantsResult = `${word} contains ${vowelsCount} vowels and ${consonantsCount} consonants`;
