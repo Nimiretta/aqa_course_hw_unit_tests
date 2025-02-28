@@ -9,7 +9,13 @@
 */
 
 function digitalRoot(number) {
-  // Ваш код
+  if (number <= 9) return number;
+  const digitSum = number
+    .toString()
+    .replace(/\D/g, '')
+    .split('')
+    .reduce((acc, el) => acc + +el, 0);
+  return digitalRoot(digitSum);
 }
 
 export { digitalRoot };
