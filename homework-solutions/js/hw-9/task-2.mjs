@@ -14,23 +14,51 @@ const characters = [
 ];
 
 function addCharacter(character) {
-  // Ваш код
+  if (typeof character.name !== 'string' || typeof character.age !== 'number') {
+    throw new Error('Properties name and age must exist and must be string');
+  }
+  characters.push(character);
 }
 
 function getCharacter(name) {
-  // Ваш код
+  if (!name || typeof name !== 'string') {
+    throw new Error('String param must be passed');
+  }
+  return characters.find((character) => character.name === name);
 }
 
 function getCharactersByAge(minAge) {
-  // Ваш код
+  if (!minAge || typeof minAge !== 'number') {
+    throw new Error('Number param must be passed');
+  }
+  return characters.filter((character) => character.age >= minAge);
 }
 
 function updateCharacter(name, newCharacter) {
-  // Ваш код
+  if (typeof newCharacter.name !== 'string' || typeof newCharacter.age !== 'number') {
+    throw new Error('Properties name and age must exist and must be string');
+  }
+
+  const character = getCharacter(name);
+  if (character) {
+    character.name = newCharacter.name;
+    character.age = newCharacter.age;
+  } else {
+    throw new Error('Character not found');
+  }
 }
 
 function removeCharacter(name) {
-  // Ваш код
+  if (!name || typeof name !== 'string') {
+    throw new Error('String param must be passed');
+  }
+
+  const indextoRemove = characters.findIndex((character) => character.name === name);
+  if (indextoRemove !== -1) {
+    characters.splice(indextoRemove, 1);
+  } else {
+    throw new Error('Character not found');
+  }
 }
 
 export { characters, addCharacter, updateCharacter, getCharacter, getCharactersByAge, removeCharacter };
