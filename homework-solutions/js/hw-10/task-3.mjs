@@ -16,11 +16,22 @@
 */
 
 function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function uniqueRandomGenerator(n) {
-  // Ваш код
+  const usedNumbers = new Set();
+  return () => {
+    if (usedNumbers.size === n) return 'All numbers were received';
+
+    let num;
+    do {
+      num = getRandomArbitrary(1, n);
+    } while (usedNumbers.has(num));
+    usedNumbers.add(num);
+
+    return num;
+  };
 }
 
 export { uniqueRandomGenerator };
