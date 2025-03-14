@@ -8,7 +8,10 @@
 */
 
 function countOccurrences(arr) {
-  // ваш код
+  const result = {};
+  const unique = new Set(arr);
+  unique.forEach((value) => (result[value] = arr.filter((num) => num === value).length));
+  return result;
 }
 
 export { countOccurrences };
