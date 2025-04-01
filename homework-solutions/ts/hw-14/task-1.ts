@@ -55,8 +55,12 @@ const stringArray = wrapInArray('Hello'); // ['Hello']
 // 11. Создайте дженерик функцию getLastElement, которая принимает массив элементов типа T, и возвращает последний элемент (типа T).
 
 function getLastItem<T>(arr: T[]): T {
+  if (arr.length === 0) {
+    throw new Error('Array is empty');
+  }
   return arr[arr.length - 1];
 }
 
 console.log(getLastItem([1, 2, 3, 4])); // 4
 console.log(getLastItem(['a', 'b', 'c'])); // 'c'
+console.log(getLastItem([]));
